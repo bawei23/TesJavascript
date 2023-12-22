@@ -1,0 +1,41 @@
+<html>
+
+<body>
+    <input class="angka" type="number" name="angka" placeholder="Input Angka" value=""/>
+    <br>
+    <div>
+        <button onclick="segitiga()">Generate Segitiga</button>
+        <button>Generate Bilangan Ganjil</button>
+        <button>Generate Bilangan Prima</button>
+    </div>
+    <div>
+        <p><strong>Result :</strong></p>
+        <span class="hasil"></span>
+    </div>
+
+</body>
+<footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+               
+        });
+
+        function segitiga(){
+            var angka = document.getElementsByClassName("angka")[0].value;
+
+            var xhr = new XMLHttpRequest();
+            var url = "http://localhost:3000/segitiga";
+            var params = "angka=" + angka;
+            xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    var res = this.responseText;
+                    console.log(res)
+                }
+            };
+            xhr.open("POST", url, true);
+            xhr.send(params);
+           
+        }
+    </script>
+</footer>
+</html>
